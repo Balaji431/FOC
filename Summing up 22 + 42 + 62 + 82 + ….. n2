@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main()
+{
+    int N, sum = 0;
+
+    printf("Enter the value of N: ");
+    scanf("%d", &N);
+
+    for (int i = 2; i <= N; i += 2)
+    {
+        sum += i * i; // add the square of the current even number to the sum
+    }
+
+    printf("The sum of the series is %d\n", sum);
+
+    return 0;
+}
