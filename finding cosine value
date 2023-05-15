@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double x, term, cosx, error, tolerance;
+    int n, i, sign;
+
+    printf("Enter the value of x (in radians): ");
+    scanf("%lf", &x);
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    cosx = 1.0;  
+    sign = -1;  
+
+    for (i = 2; i <= 2*n; i += 2) {
+        term = pow(x, i) / tgamma(i+1); 
+        cosx += sign * term;            
+        sign = -sign;                   
+    }
+
+    printf("Cosine of %lf radians = %lf\n", x, cosx);
+
+    tolerance = 1.0e-8;
+    error = fabs(cos(x) - cosx);
+    if (error < tolerance) {
+        printf("The error is within tolerance.\n");
+    } else {
+        printf("The error is too large.\n");
+    }
+
+    return 0;
+}
