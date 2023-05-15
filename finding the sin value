@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double x, term, sum;
+    int i, sign;
+
+    printf("Enter the value of x in radians: ");
+    scanf("%lf", &x);
+
+    term = x;
+    sum = x;
+    sign = -1;
+
+    for(i = 3; fabs(term) > 0.000001; i += 2) {
+        term = sign * pow(x, i) / tgamma(i + 1);
+        sum += term;
+        sign = -sign;
+    }
+
+    printf("The value of sin(%lf) = %lf", x, sum);
+
+    return 0;
+}
